@@ -323,3 +323,67 @@ p {
     margin-top: 20px;
   }
 }
+
+/* ------------------------------------
+   RETINA / HIGH-DPI FIX
+   Makes UI bigger on new MacBooks
+------------------------------------ */
+@media 
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi) {
+
+  body {
+    font-size: 1.15rem; /* bump base size */
+  }
+
+  h1, h2, h3 {
+    font-size: 2.6rem; /* bigger headings */
+  }
+
+  #fixed-header img {
+    width: 260px; /* larger logo */
+  }
+
+  #top-socials a {
+    font-size: 2.1rem; /* bigger top-left icons */
+  }
+
+  #lang-toggle button {
+    padding: 8px 18px;
+    font-size: 1.05rem; /* readable toggle */
+  }
+
+  /* CTA + SEND + ENTER buttons bigger */
+  .enter-style-btn,
+  .cta-btn,
+  #enter-btn {
+    font-size: 1.2rem;
+    padding: 12px 34px;
+  }
+
+  /* Form inputs */
+  .form-control {
+    font-size: 1.15rem;
+    padding: 12px 16px;
+  }
+
+  /* Popup modal */
+  .popup-inner {
+    max-width: 540px;
+    padding: 42px;
+  }
+
+  .popup-title {
+    font-size: 2.1rem;
+  }
+
+  .popup-body {
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+
+  .popup-back-btn {
+    font-size: 1.2rem;
+    padding: 12px 34px;
+  }
+}
