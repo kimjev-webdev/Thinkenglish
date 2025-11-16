@@ -384,3 +384,14 @@ p {
     padding: 12px 34px;
   }
 }
+
+/* ------------------------------------
+   LARGE SCREENS (1440px and up)
+   Bigger paragraph text only
+------------------------------------ */
+@media (min-width: 1440px) {
+  p {
+    font-size: 1.3rem;   /* was 1.1rem */
+    line-height: 1.85;   /* slightly more breathing room */
+  }
+}
