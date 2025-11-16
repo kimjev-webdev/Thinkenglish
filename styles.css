@@ -345,7 +345,8 @@ p {
   }
 
   #fixed-header img {
-    width: 260px; /* bigger logo */
+    width: 260px;
+    padding: 40px 0 40px 0; /* bigger logo */
   }
 
   #top-socials a {
