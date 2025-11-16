@@ -1,0 +1,258 @@
+/* ------------------------------------
+   GLOBAL COLOURS
+------------------------------------ */
+:root {
+  --navy: #002e5f;
+  --white: #ffffff;
+  --accent1: #f8ca39;
+  --accent2: #ca1432;
+}
+
+/* ------------------------------------
+   RESET
+------------------------------------ */
+* {
+  margin: 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ------------------------------------
+   TYPOGRAPHY
+------------------------------------ */
+h1, h2, h3 {
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 25px;
+}
+
+p {
+  color: var(--white);
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ------------------------------------
+   FIXED TOP LOGO
+------------------------------------ */
+#fixed-header {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 0 0;
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  z-index: 9999;
+}
+
+#fixed-header img {
+  width: 200px;
+}
+
+/* ------------------------------------
+   LANGUAGE SWITCHER
+------------------------------------ */
+#lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 20000;
+}
+
+#lang-toggle button {
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+#lang-toggle .active {
+  background: var(--accent1);
+  border-color: var(--accent1);
+  color: var(--navy);
+}
+
+/* ------------------------------------
+   INTRO SCREEN
+------------------------------------ */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 15000;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+#intro.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#intro-logo {
+  width: 240px;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#enter-btn {
+  margin-top: 30px;
+  padding: 10px 28px;
+  background: var(--accent1);
+  border: none;
+  border-radius: 6px;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  animation: buttonFade 1.8s ease forwards;
+  animation-delay: 1.4s;
+  transition: transform 0.2s;
+}
+
+#enter-btn:hover {
+  transform: scale(1.07);
+}
+
+@keyframes buttonFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* SEND button on contact page */
+.enter-style-btn {
+  background: var(--accent1);
+  border: none;
+  border-radius: 6px;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 10px 28px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.enter-style-btn:hover {
+  transform: scale(1.07);
+  background: var(--accent2);
+  color: var(--white);
+}
+
+/* ------------------------------------
+   CTA BUTTON – SAME AS ENTER
+------------------------------------ */
+.cta-btn {
+  display: inline-block;
+  background: var(--accent1);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.25s, background 0.25s, color 0.25s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  transform: scale(1.08);
+  background: var(--accent2);
+  color: var(--white);
+}
+
+/* ------------------------------------
+   SITE CONTENT FADE
+------------------------------------ */
+#site-content {
+  opacity: 0;
+  transition: opacity 1.3s ease;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------
+   TOP LEFT SOCIAL ICONS
+------------------------------------ */
+#top-socials {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 20000;
+}
+
+#top-socials a {
+  font-size: 1.8rem;
+  color: var(--accent1);
+  transition: transform 0.2s, color 0.2s;
+}
+
+#top-socials a:hover {
+  transform: scale(1.15);
+  color: var(--accent2);
+}
+
+/* ------------------------------------
+   STEAM ICONS
+------------------------------------ */
+.steam-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: var(--accent1);
+}
+
+.steam-icons i {
+  opacity: 0;
+  animation: steamFade 0.6s ease forwards;
+}
+
+.steam-icons i:nth-child(1) { animation-delay: 0.1s; }
+.steam-icons i:nth-child(2) { animation-delay: 0.25s; }
+.steam-icons i:nth-child(3) { animation-delay: 0.4s; }
+.steam-icons i:nth-child(4) { animation-delay: 0.55s; }
+.steam-icons i:nth-child(5) { animation-delay: 0.7s; }
+
+@keyframes steamFade {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
