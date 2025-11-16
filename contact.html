@@ -19,7 +19,7 @@
 
 <body>
 
-<!-- TOP-LEFT SOCIAL ICONS (CIRCULAR STYLE) -->
+<!-- TOP-LEFT SOCIAL ICONS -->
 <div id="top-socials">
   <a href="https://wa.me/393498058580" target="_blank" class="circle-icon">
     <i class="fab fa-whatsapp"></i>
@@ -34,15 +34,13 @@
   </a>
 </div>
 
-
-
 <!-- LANGUAGE TOGGLE -->
 <div id="lang-toggle">
   <button id="btn-en" class="active">EN</button>
   <button id="btn-it">IT</button>
 </div>
 
-<!-- FIXED TOP LOGO -->
+<!-- FIXED LOGO HEADER -->
 <header id="fixed-header">
   <a href="index.html"><img src="Badgelogotransparent.png" alt="Logo"></a>
 </header>
@@ -61,44 +59,38 @@
   <div class="row py-4">
     <div class="col-lg-8 offset-lg-2">
 
-      <!-- CONTACT FORM -->
-      <form id="contact-form">
+<!-- CONTACT FORM -->
+<form id="contact-form"
+      action="https://formspree.io/f/xanapgbd"
+      method="POST">
 
-        <!-- FORM PLACEHOLDER FOR FORMSPREE -->
-        <!-- ======================================================
-             PLACE YOUR FORMSPREE ACTION URL HERE WHEN APPROVED:
-             <form action="YOUR_FORMSPREE_URL" method="POST">
-           ====================================================== -->
+  <div class="mb-3">
+    <label class="form-label" data-en="Name" data-it="Nome"></label>
+    <input type="text" class="form-control" name="name" required>
+  </div>
 
-        <div class="mb-3">
-          <label class="form-label" data-en="Name" data-it="Nome"></label>
-          <input type="text" class="form-control" required>
-        </div>
+  <div class="mb-3">
+    <label class="form-label" data-en="Phone Number" data-it="Numero di Telefono"></label>
+    <input type="text" class="form-control" name="phone">
+  </div>
 
-        <div class="mb-3">
-          <label class="form-label" data-en="Phone Number" data-it="Numero di Telefono"></label>
-          <input type="text" class="form-control">
-        </div>
+  <div class="mb-3">
+    <label class="form-label" data-en="Email" data-it="Email"></label>
+    <input type="email" class="form-control" name="email" required>
+  </div>
 
-        <div class="mb-3">
-          <label class="form-label" data-en="Email" data-it="Email"></label>
-          <input type="email" class="form-control" required>
-        </div>
+  <div class="mb-3">
+    <label class="form-label" data-en="Message" data-it="Messaggio"></label>
+    <textarea class="form-control" rows="5" name="message" required></textarea>
+  </div>
 
-        <div class="mb-3">
-          <label class="form-label" data-en="Message" data-it="Messaggio"></label>
-          <textarea class="form-control" rows="5" required></textarea>
-        </div>
+  <div class="text-center">
+    <button id="send-btn" type="submit" class="enter-style-btn mt-3"
+      data-en="SEND"
+      data-it="INVIA"></button>
+  </div>
 
-       <div class="text-center">
-  <button id="send-btn" class="enter-style-btn mt-3"
-    data-en="SEND"
-    data-it="INVIA"></button>
-</div>
-
-
-
-      </form>
+</form>
 
       <p class="mt-4 text-center email-display"
          data-en="Email: thinkenglish.vigevano@gmail.com"
@@ -108,8 +100,21 @@
   </div>
 
 </div>
+</div>
 
-</div> <!-- END SITE CONTENT -->
+<!-- SUCCESS POPUP -->
+<div id="success-popup" class="success-popup">
+  <div class="popup-inner">
+    <h2 class="popup-title">Thank you for your message</h2>
+    <p class="popup-body text-center">
+      We aim to reply within 1–3 working days.<br>
+      You can call us on<br>
+      <strong class="phonelink">+39 349 805 8580</strong>
+    </p>
+
+    <a href="index.html" class="popup-back-btn">Go Back</a>
+  </div>
+</div>
 
 <script>
 const translatable = document.querySelectorAll("[data-en]");
@@ -123,7 +128,6 @@ function switchLang(lang) {
   translatable.forEach(el => {
     el.innerHTML = el.getAttribute(`data-${lang}`);
   });
-
   btnEN.classList.toggle("active", lang === "en");
   btnIT.classList.toggle("active", lang === "it");
 }
@@ -132,27 +136,27 @@ switchLang("en");
 </script>
 
 <script>
-// ------------------------------------------------------------
-// Landing animation should only play once per day
-// ------------------------------------------------------------
+// SUCCESS POPUP LOGIC
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-const lastVisit = localStorage.getItem("thinkenglish_visit");
-const today = new Date().toDateString();
+  const form = this;
+  const popup = document.getElementById("success-popup");
 
-if (lastVisit === today) {
-  // User has already visited today → skip intro
-  const intro = document.getElementById("intro");
-  if (intro) {
-    intro.style.display = "none";
-    const siteContent = document.getElementById("site-content");
-    if (siteContent) siteContent.style.opacity = "1";
-  }
-} else {
-  // First visit today → record it
-  localStorage.setItem("thinkenglish_visit", today);
-}
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  })
+  .then(response => {
+    popup.classList.add("active");
+    form.reset();
+  })
+  .catch(() => {
+    popup.classList.add("active");
+  });
+});
 </script>
-
 
 </body>
 </html>

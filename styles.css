@@ -22,6 +22,7 @@ body {
   color: var(--white);
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
+  padding: 10px; /* restores spacing you lost */
 }
 
 /* ------------------------------------
@@ -41,6 +42,7 @@ p {
   text-align: justify;
   font-size: 1.1rem;
   line-height: 1.7;
+  margin-bottom: 20px;
 }
 
 /* ------------------------------------
@@ -146,7 +148,7 @@ p {
   to { opacity: 1; }
 }
 
-/* SEND button on contact page */
+/* SEND button */
 .enter-style-btn {
   background: var(--accent1);
   border: none;
@@ -157,6 +159,7 @@ p {
   padding: 10px 28px;
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
+  display: inline-block;
 }
 
 .enter-style-btn:hover {
@@ -166,7 +169,7 @@ p {
 }
 
 /* ------------------------------------
-   CTA BUTTON – SAME AS ENTER
+   CTA BUTTON
 ------------------------------------ */
 .cta-btn {
   display: inline-block;
@@ -189,25 +192,82 @@ p {
 }
 
 /* ------------------------------------
-   SITE CONTENT FADE
+   SUCCESS POPUP — FIXED & CENTERED
 ------------------------------------ */
-#site-content {
-  opacity: 0;
-  transition: opacity 1.3s ease;
+.success-popup {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 50000;
+  padding: 0;         /* override bootstrap */
+  margin: 0 !important;
 }
 
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s forwards;
+.success-popup.active {
+  display: flex !important;
 }
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+.popup-inner {
+  background: #ffffff;
+  color: var(--navy);
+  padding: 30px;
+  max-width: 420px;
+  width: 90%;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  margin: 0 auto;     /* ensure true centering */
 }
+
+/* Title */
+.popup-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* Body text */
+.popup-body {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+/* Red → yellow button */
+.popup-back-btn {
+  display: inline-block;
+  padding: 10px 26px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  background: var(--accent2); /* red */
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.popup-back-btn:active {
+  background: var(--accent1); /* yellow */
+  color: var(--navy);
+}
+
+.phonelink {
+  color: var(--accent2);
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
 
 /* ------------------------------------
-   TOP LEFT SOCIAL ICONS
+   SOCIAL ICONS
 ------------------------------------ */
 #top-socials {
   position: fixed;
