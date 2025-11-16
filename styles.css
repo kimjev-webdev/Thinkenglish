@@ -12,7 +12,7 @@
    RESET
 ------------------------------------ */
 * {
-  margin: 0px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -44,6 +44,12 @@ p {
   line-height: 1.7;
   margin-bottom: 20px;
 }
+
+#site-content .col-lg-10 p {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 
 /* ------------------------------------
    FIXED TOP LOGO
@@ -393,5 +399,11 @@ p {
   p {
     font-size: 1.3rem;   /* was 1.1rem */
     line-height: 1.85;   /* slightly more breathing room */
+  }
+}
+
+@media (min-width: 1440px) {
+  #site-content .col-lg-10 p {
+    max-width: 1000px;
   }
 }
